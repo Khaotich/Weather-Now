@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_today">
+
+    <fragment
+        android:id="@+id/navigation_today"
+        android:name="com.khaotic.weather_now.ui.today.TodayFragment"
+        android:label="@string/title_today"
+        tools:layout="@layout/fragment_today" />
+
+    <fragment
+        android:id="@+id/navigation_hourly"
+        android:name="com.khaotic.weather_now.ui.hourly.HourlyFragment"
+        android:label="@string/title_hourly"
+        tools:layout="@layout/fragment_hourly" />
+
+    <fragment
+        android:id="@+id/navigation_daily"
+        android:name="com.khaotic.weather_now.ui.daily.DailyFragment"
+        android:label="@string/title_daily"
+        tools:layout="@layout/fragment_daily" />
+
+    <fragment
+        android:id="@+id/navigation_cities"
+        android:name="com.khaotic.weather_now.ui.cities.CitiesFragment"
+        android:label="@string/title_cities"
+        tools:layout="@layout/fragment_cities" />
+
+    <fragment
+        android:id="@+id/navigation_fav_cities"
+        android:name="com.khaotic.weather_now.ui.fav_cities.FavCitiesFragment"
+        android:label="@string/title_fav_cities"
+        tools:layout="@layout/fragment_fav_cities" />
+
+</navigation>

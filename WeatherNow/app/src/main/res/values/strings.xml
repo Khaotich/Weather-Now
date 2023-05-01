@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Weather-Now</string>
+    <string name="title_today">Today</string>
+    <string name="title_hourly">Hourly</string>
+    <string name="title_daily">Daily</string>
+    <string name="title_cities">Cities</string>
+    <string name="title_fav_cities">Favourite Cities</string>
+</resources>
