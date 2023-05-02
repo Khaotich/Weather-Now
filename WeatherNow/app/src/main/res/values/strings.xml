@@ -4,5 +4,6 @@
     <string name="title_hourly">Hourly</string>
     <string name="title_daily">Daily</string>
     <string name="title_cities">Cities</string>
-    <string name="title_fav_cities">Favourite Cities</string>
+    <string name="title_fav_cities">Favorite Cities</string>
+    <string name="fav">Favorite</string>
 </resources>

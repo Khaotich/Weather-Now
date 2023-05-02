@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/navigation_fav_cities"
         android:name="com.khaotic.weather_now.ui.fav_cities.FavCitiesFragment"
-        android:label="@string/title_fav_cities"
+        android:label="@string/fav"
         tools:layout="@layout/fragment_fav_cities" />
 
 </navigation>
