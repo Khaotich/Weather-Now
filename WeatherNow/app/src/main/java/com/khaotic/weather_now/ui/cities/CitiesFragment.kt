@@ -1,6 +1,10 @@
 package com.khaotic.weather_now.ui.cities
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.database.sqlite.SQLiteDatabase as sql
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,13 +24,10 @@ class CitiesFragment : Fragment() {
     private var _binding: FragmentCitiesBinding? = null
     private val binding get() = _binding!!
 
-    //test
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
     private var mList = ArrayList<City>()
     private lateinit var adapter: LanguageAdapter
-
-//    private val navController = findNavController()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -95,14 +96,37 @@ class CitiesFragment : Fragment() {
         }
     }
 
+    @SuppressLint("Recycle", "SdCardPath", "DiscouragedApi")
     private fun addDataToList() {
-        mList.add(City("Java", R.drawable.ic_city))
-        mList.add(City("Kotlin", R.drawable.ic_city))
-        mList.add(City("C++", R.drawable.ic_city))
-        mList.add(City("Python", R.drawable.ic_city))
-        mList.add(City("HTML", R.drawable.ic_city))
-        mList.add(City("Swift", R.drawable.ic_city))
-        mList.add(City("C#", R.drawable.ic_city))
-        mList.add(City("JavaScript", R.drawable.ic_city))
+        val con = context
+        val dictionary = mutableMapOf<String, Int>()
+            for (i in 65..90)
+                for (j in 65..90)
+                {
+                    val key = (i.toChar().toString() + j.toChar().toString()).lowercase(Locale.ROOT)
+                    val id = con!!.resources.getIdentifier(key, "drawable", con.packageName)
+                    dictionary[key] = id
+                }
+
+        val db: sql = sql.openOrCreateDatabase("/data/data/com.khaotic." +
+                "weather_now/databases/cities.db",null)
+        val query = db.rawQuery("SELECT name, country FROM cities", null)
+        val range = query.count
+
+
+        query.moveToFirst()
+        for (i in 0 until range)
+        {
+            val city = query.getString(0).toString()
+            val country = query.getString(1).toString().lowercase(Locale.ROOT)
+            val id = dictionary.getOrDefault(country, 0)
+
+            if(id != 0)
+                mList.add(City(city, id))
+            else
+                mList.add(City(city, R.drawable.ic_city))
+
+            query.moveToNext()
+        }
     }
 }
