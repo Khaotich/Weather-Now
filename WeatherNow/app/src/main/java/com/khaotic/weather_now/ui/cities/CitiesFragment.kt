@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.khaotic.weather_now.R
 import com.khaotic.weather_now.databinding.FragmentCitiesBinding
 import java.util.*
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 
 class CitiesFragment : Fragment() {
 
@@ -31,19 +33,16 @@ class CitiesFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val homeViewModel = ViewModelProvider(this).get(CitiesViewModel::class.java)
+        val homeViewModel = ViewModelProvider(this)[CitiesViewModel::class.java]
         _binding = FragmentCitiesBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val navController = findNavController()
 
-
         recyclerView = binding.recyclerView
         searchView = binding.searchView
-
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         addDataToList()
-
         adapter = LanguageAdapter(mList)
         recyclerView.adapter = adapter
 
@@ -62,7 +61,6 @@ class CitiesFragment : Fragment() {
                 filterList(newText)
                 return true
             }
-
         })
 
 //        val textView: TextView = binding.homeViewModel.text.observe(viewLifecycleOwner) {
@@ -112,7 +110,6 @@ class CitiesFragment : Fragment() {
                 "weather_now/databases/cities.db",null)
         val query = db.rawQuery("SELECT name, country FROM cities", null)
         val range = query.count
-
 
         query.moveToFirst()
         for (i in 0 until range)

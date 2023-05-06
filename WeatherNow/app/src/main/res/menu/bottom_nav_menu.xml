@@ -24,6 +24,6 @@
     <item
         android:id="@+id/navigation_fav_cities"
         android:icon="@drawable/ic_fav"
-        android:title="@string/title_fav_cities" />
+        android:title="@string/favorite" />
 
 </menu>
