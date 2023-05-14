@@ -1,6 +1,7 @@
 package com.khaotic.weather_now.ui.fav_cities
 
 import android.annotation.SuppressLint
+import android.content.Context.MODE_PRIVATE
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,6 +30,7 @@ class FavCitiesFragment : Fragment() {
     private var mList = ArrayList<City>()
     private lateinit var adapter: LanguageAdapter
 
+    @SuppressLint("CommitPrefEdits")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -46,9 +48,14 @@ class FavCitiesFragment : Fragment() {
         recyclerView.adapter = adapter
 
         adapter.onItemClick = {
-            val bundle = Bundle()
-            bundle.putString("city", it.title)
-            navController.navigate(R.id.navigation_today, bundle)
+            val sharedPref = root.context.getSharedPreferences("data", MODE_PRIVATE)
+            val edit = sharedPref.edit()
+            edit.apply {
+                putString("city", it.title)
+                apply()
+            }
+
+            navController.navigate(R.id.navigation_today)
         }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -66,6 +73,7 @@ class FavCitiesFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
+
         return root
     }
 
