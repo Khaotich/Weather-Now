@@ -47,14 +47,9 @@ class CitiesFragment : Fragment() {
         recyclerView.adapter = adapter
 
         adapter.onItemClick = {
-            val sharedPref = root.context.getSharedPreferences("data", Context.MODE_PRIVATE)
-            val edit = sharedPref.edit()
-            edit.apply {
-                putString("city", it.title)
-                apply()
-            }
-
-            navController.navigate(R.id.navigation_today)
+            val bundle = Bundle()
+            bundle.putString("city", it.title)
+            navController.navigate(R.id.navigation_today, bundle)
         }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

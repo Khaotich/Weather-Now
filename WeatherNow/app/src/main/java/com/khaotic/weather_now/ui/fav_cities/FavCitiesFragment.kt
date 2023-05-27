@@ -34,7 +34,6 @@ class FavCitiesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val homeViewModel = ViewModelProvider(this).get(FavCitiesViewModel::class.java)
         _binding = FragmentFavCitiesBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val navController = findNavController()
@@ -48,14 +47,9 @@ class FavCitiesFragment : Fragment() {
         recyclerView.adapter = adapter
 
         adapter.onItemClick = {
-            val sharedPref = root.context.getSharedPreferences("data", MODE_PRIVATE)
-            val edit = sharedPref.edit()
-            edit.apply {
-                putString("city", it.title)
-                apply()
-            }
-
-            navController.navigate(R.id.navigation_today)
+            val bundle = Bundle()
+            bundle.putString("city", it.title)
+            navController.navigate(R.id.navigation_today, bundle)
         }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -68,11 +62,6 @@ class FavCitiesFragment : Fragment() {
                 return true
             }
         })
-
-//        val textView: TextView = binding.
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
 
         return root
     }
