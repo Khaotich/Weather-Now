@@ -70,6 +70,16 @@ class TodayFragment : Fragment() {
         val sunriseText = binding.textSunrise
         val sunsetText = binding.textSunset
 
+        //widgets for pollution
+        val co = binding.textViewCo
+        val no = binding.textViewNo
+        val no2 = binding.textViewNo2
+        val o3 = binding.textViewO3
+        val so2 = binding.textViewSo2
+        val pm25 = binding.textViewPm25
+        val pm10 = binding.textViewPm10
+        val nh3 = binding.textViewNh3
+
         var lon = 0.0
         var lat = 0.0
         fun co()
@@ -127,6 +137,38 @@ class TodayFragment : Fragment() {
             }
         }
 
+        fun get_pollution()
+        {
+            GlobalScope.launch(Dispatchers.Main)
+            {
+                val retrofit = Retrofit.Builder()
+                    .baseUrl("https://api.openweathermap.org")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+
+                val api = retrofit.create(PlaceholderApi::class.java)
+                val data = withContext(Dispatchers.IO)
+                {
+                    val response = async {
+                        api.pollution(lon.toString(), lat.toString())
+                    }
+                    return@withContext response.await()
+                }
+
+                val call = data.await()
+                val elements = call.list[0].components
+
+                co.text = elements.co.toString()
+                no.text = elements.no.toString()
+                no2.text = elements.no2.toString()
+                o3.text = elements.o3.toString()
+                so2.text = elements.so2.toString()
+                pm25.text = elements.pm2_5.toString()
+                pm10.text = elements.pm10.toString()
+                nh3.text = elements.nh3.toString()
+            }
+        }
+
         val db: SQLiteDatabase = SQLiteDatabase.openOrCreateDatabase(
             "/data/data/com.khaotic." +
                     "weather_now/databases/cities.db", null
@@ -157,6 +199,7 @@ class TodayFragment : Fragment() {
             )
             imageView.setImageResource(id)
             co()
+            get_pollution()
         }
         else
         {
@@ -172,7 +215,10 @@ class TodayFragment : Fragment() {
                     {
                         lat = location.latitude
                         lon = location.longitude
+
                         co()
+                        get_pollution()
+
                         val sharedPref = root.context.getSharedPreferences("data", Context.MODE_PRIVATE)
                         city = sharedPref.getString("city", "")
                         val query = db.rawQuery("SELECT name, country, fav, lon, lat FROM cities WHERE name='${city}'"

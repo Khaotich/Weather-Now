@@ -2,6 +2,7 @@ package com.khaotic.weather_now.ui.cities
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.util.Log
 import android.database.sqlite.SQLiteDatabase as sql
@@ -49,6 +50,14 @@ class CitiesFragment : Fragment() {
         adapter.onItemClick = {
             val bundle = Bundle()
             bundle.putString("city", it.title)
+
+            val sharedPref = root.context.getSharedPreferences("data", MODE_PRIVATE)
+            val edit = sharedPref.edit()
+            edit.apply {
+                putString("city", it.title)
+                apply()
+            }
+
             navController.navigate(R.id.navigation_today, bundle)
         }
 
@@ -62,10 +71,6 @@ class CitiesFragment : Fragment() {
                 return true
             }
         })
-
-//        val textView: TextView = binding.homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
 
         return root
     }
