@@ -20,7 +20,7 @@ import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.gms.tasks.OnTokenCanceledListener
 import com.khaotic.weather_now.R
 import com.khaotic.weather_now.databinding.FragmentTodayBinding
-import com.khaotic.weather_now.ui.cities.LanguageAdapter
+import com.khaotic.weather_now.weather_api.PlaceholderApi
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -225,6 +225,7 @@ class TodayFragment : Fragment() {
                                             , null)
                         query.moveToFirst()
                         fav = query.getString(2).toInt()
+
                         if (fav == 0)
                             imageButton.setImageResource(R.drawable.favorite)
                         else

@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.khaotic.weather_now.databinding.FragmentDailyBinding
-import com.khaotic.weather_now.ui.today.Forecast
-import com.khaotic.weather_now.ui.today.PlaceholderApi
+import com.khaotic.weather_now.weather_api.Forecast
+import com.khaotic.weather_now.weather_api.PlaceholderApi
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

@@ -1,4 +1,4 @@
-package com.khaotic.weather_now.ui.today
+package com.khaotic.weather_now.weather_api
 
 //for weather
 

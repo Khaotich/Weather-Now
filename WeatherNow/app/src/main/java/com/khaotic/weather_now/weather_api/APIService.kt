@@ -1,4 +1,4 @@
-package com.khaotic.weather_now.ui.today
+package com.khaotic.weather_now.weather_api
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -13,16 +13,19 @@ interface PlaceholderApi
     fun weather(@Query("lon") lot: String,
                 @Query("lat") lat: String,
                 @Query("appid") key: String = key_api,
-                @Query("units") units: String = metric): Call<json>
+                @Query("units") units: String = metric
+    ): Call<json>
 
     @GET("/data/2.5/air_pollution")
     fun pollution(@Query("lon") lot: String,
                   @Query("lat") lat: String,
-                  @Query("appid") key: String = key_api): Call<Pollution>
+                  @Query("appid") key: String = key_api
+    ): Call<Pollution>
 
     @GET("/data/2.5/forecast")
     fun forecast(@Query("lon") lot: String,
                  @Query("lat") lat: String,
                  @Query("appid") key: String = key_api,
-                 @Query("units") units: String = metric): Call<Forecast>
+                 @Query("units") units: String = metric
+    ): Call<Forecast>
 }
