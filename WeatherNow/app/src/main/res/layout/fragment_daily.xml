@@ -29,7 +29,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TextView"
                 android:textAlignment="center" />
 
             <LinearLayout
@@ -44,7 +43,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="TextView"
                     android:textAlignment="center" />
 
                 <TextView
@@ -52,8 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
             </LinearLayout>
 
             <ImageView
@@ -83,7 +80,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TextView"
                 android:textAlignment="center" />
 
             <LinearLayout
@@ -98,7 +94,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="TextView"
                     android:textAlignment="center" />
 
                 <TextView
@@ -106,8 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
             </LinearLayout>
 
             <ImageView
@@ -137,7 +131,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TextView"
                 android:textAlignment="center" />
 
             <LinearLayout
@@ -152,7 +145,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="TextView"
                     android:textAlignment="center" />
 
                 <TextView
@@ -160,8 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
             </LinearLayout>
 
             <ImageView
@@ -191,7 +182,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TextView"
                 android:textAlignment="center" />
 
             <LinearLayout
@@ -206,7 +196,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="TextView"
                     android:textAlignment="center" />
 
                 <TextView
@@ -214,8 +203,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
             </LinearLayout>
 
             <ImageView
@@ -245,7 +233,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TextView"
                 android:textAlignment="center" />
 
             <LinearLayout
@@ -260,7 +247,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="TextView"
                     android:textAlignment="center" />
 
                 <TextView
@@ -268,8 +254,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="TextView" />
+                    android:gravity="center" />
             </LinearLayout>
 
             <ImageView
